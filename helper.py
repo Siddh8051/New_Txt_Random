@@ -1,34 +1,34 @@
-import logging   #Bot Created by @NtrRazYt
-import subprocess   #Bot Created by @NtrRazYt
-import datetime   #Bot Created by @NtrRazYt
-import asyncio   #Bot Created by @NtrRazYt
-import os   #Bot Created by @NtrRazYt
-import requests   #Bot Created by @NtrRazYt
-import time   #Bot Created by @NtrRazYt
-from p_bar import progress_bar   #Bot Created by @NtrRazYt
-import aiohttp   #Bot Created by @NtrRazYt
-import aiofiles   #Bot Created by @NtrRazYt
-import tgcrypto   #Bot Created by @NtrRazYt
-import concurrent.futures   #Bot Created by @NtrRazYt
-import subprocess   #Bot Created by @NtrRazYt
-from pyrogram.types import Message   #Bot Created by @NtrRazYt
-from pyrogram import Client, filters   #Bot Created by @NtrRazYt
-   #Bot Created by @NtrRazYt
-def duration(filename):   #Bot Created by @NtrRazYt
-    result = subprocess.run(["ffprobe", "-v", "error", "-show_entries",   #Bot Created by @NtrRazYt
-                             "format=duration", "-of",   #Bot Created by @NtrRazYt
-                             "default=noprint_wrappers=1:nokey=1", filename],   #Bot Created by @NtrRazYt
-        stdout=subprocess.PIPE,   #Bot Created by @NtrRazYt
-        stderr=subprocess.STDOUT)   #Bot Created by @NtrRazYt
-    return float(result.stdout)   #Bot Created by @NtrRazYt
+import logging   
+import subprocess   
+import datetime  
+import asyncio   
+import os  
+import requests   
+import time  
+from p_bar import progress_bar   
+import aiohttp  
+import aiofiles   
+import tgcrypto   
+import concurrent.futures   
+import subprocess   
+from pyrogram.types import Message  
+from pyrogram import Client, filters  
+ 
+def duration(filename):   
+    result = subprocess.run(["ffprobe", "-v", "error", "-show_entries",  
+                             "format=duration", "-of",  
+                             "default=noprint_wrappers=1:nokey=1", filename], 
+        stdout=subprocess.PIPE,   
+        stderr=subprocess.STDOUT)   
+    return float(result.stdout)   
        #Bot Created by @NtrRazYt
-def exec(cmd):   #Bot Created by @NtrRazYt
-        process = subprocess.run(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)   #Bot Created by @NtrRazYt
-        output = process.stdout.decode()   #Bot Created by @NtrRazYt
-        print(output)   #Bot Created by @NtrRazYt
-        return output   #Bot Created by @NtrRazYt
-        #err = process.stdout.decode()   #Bot Created by @NtrRazYt
-def pull_run(work, cmds):   #Bot Created by @NtrRazYt
+def exec(cmd): 
+        process = subprocess.run(cmd, stdout=subprocess.PIPE,stderr=subprocess.PIPE)  
+        output = process.stdout.decode()  
+        print(output)  
+        return output  
+        #err = process.stdout.decode()   
+def pull_run(work, cmds):   
     with concurrent.futures.ThreadPoolExecutor(max_workers=work) as executor:   #Bot Created by @NtrRazYt
         print("Waiting for tasks to complete")   #Bot Created by @NtrRazYt
         fut = executor.map(exec,cmds)   #Bot Created by @NtrRazYt
